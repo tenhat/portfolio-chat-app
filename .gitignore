@@ -1,0 +1,24 @@
+# すべてのログファイル
+*.log
+
+# システム生成ファイル
+.DS_Store
+Thumbs.db
+
+# エディタの設定
+.vscode/
+.idea/
+
+# 依存関係
+node_modules/
+venv/
+
+# 環境変数ファイル
+.env
+
+# ビルド出力
+/dist
+/build
+
+# 一時ファイル
+.tmp
