@@ -16,6 +16,7 @@ EXPOSE 5000
 # 環境変数を設定
 ENV FLASK_APP=app.py
 ENV FLASK_RUN_HOST=0.0.0.0
+ENV FLASK_ENV=development
 
 # コンテナが起動するときにFlaskアプリケーションを実行
 CMD ["pipenv", "run", "flask", "run"]
