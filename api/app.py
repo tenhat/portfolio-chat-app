@@ -4,12 +4,15 @@ load_dotenv('.env.local')
 import os
 from flask import Flask
 from flask_socketio import SocketIO
+from flask_cors import CORS
 from pymongo import MongoClient
 from datetime import datetime
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default')
-socketio = SocketIO(app)
+app.config['DEBUG'] = os.getenv('DEBUG', False)
+cors = CORS(app, resources={r"/socket.io/*": {"origins": "*"}})
+socketio = SocketIO(app, cors_allowed_origins="*")  # CORS設定を追加
 
 mongo_client = MongoClient('mongodb://mongoadmin:secret@db:27017/')
 db = mongo_client.chat  # chatデータベースを取得
@@ -17,16 +20,6 @@ messages = db.messages  # messagesコレクションを取得
 
 def save_message(data):
     messages.insert_one(data)
-
-@app.route('/test')
-def test_db():
-    # データベースにテストメッセージを挿入
-    save_message({
-        "username": "Test User",
-        "message": "Hello, this is a test message!",
-        "timestamp": datetime.now()
-    })
-    return "Test message inserted into MongoDB."
 
 @socketio.on('connect')
 def handle_connect():

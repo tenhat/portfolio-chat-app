@@ -3,7 +3,7 @@ import { Button, Form, InputGroup } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { setMessage } from '../../silces/MessageSlice'
-import { addMessage } from '../../silces/SentMessagesSlice'
+import socket from '../../utils/socket'
 
 export const InputForm = () => {
   console.log('InputForm')
@@ -18,12 +18,7 @@ export const InputForm = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     console.log('handleSubmit', user.id, message)
     e.preventDefault()
-    dispatch(
-      addMessage({
-        userId: user.id,
-        message: message,
-      })
-    )
+    socket.emit('send_message', {user_id: user.id, message: message, timestamp: Date.now()})
     dispatch(setMessage(''))
   }
 
