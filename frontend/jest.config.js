@@ -1,6 +1,12 @@
 module.exports = {
     preset: 'ts-jest',
-    testEnvironment: 'node',
-    // 他にカスタムのJest設定があれば、ここに追加
+    testEnvironment: 'jsdom',
+    transform: {
+      '^.+\\.tsx?$': 'ts-jest',
+    },
+    moduleNameMapper: {
+      '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
+    },
+    // 他にカスタムのJestの設定があれば、ここに追加
   };
   
