@@ -14,17 +14,17 @@ jobs:
       with:
         node-version: '12.x'
 
-    - name: Change to React directory
-      run: cd frontend  # Reactプロジェクトがあるディレクトリへ移動
-
+    # Install dependencies step
     - name: Install dependencies
-      run: |
-        npm install
+      run: npm install
+      working-directory: ./frontend
 
+    # Run tests step
     - name: Run tests
-      run: |
-        npm test
+      run: npm test
+      working-directory: ./frontend
 
+    # Build step
     - name: Build
-      run: |
-        npm run build
+      run: npm run build
+      working-directory: ./frontend
