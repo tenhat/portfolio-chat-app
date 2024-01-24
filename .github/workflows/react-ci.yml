@@ -1,0 +1,30 @@
+name: React CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+
+    # Install dependencies step
+    - name: Install dependencies
+      run: npm install
+      working-directory: ./frontend
+
+    # Run tests step
+    - name: Run tests
+      run: npm test
+      working-directory: ./frontend
+
+    # Build step
+    - name: Build
+      run: npm run build
+      working-directory: ./frontend
