@@ -1,5 +1,3 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
 import './App.css'
 import { Chat } from './components/pages/Chat'
 import 'bootstrap/dist/css/bootstrap.min.css'
