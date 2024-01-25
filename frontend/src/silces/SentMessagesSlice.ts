@@ -5,8 +5,8 @@ const SentMessagesSlice = createSlice({
   initialState: {
     messages: [
       {
-        userId: 1,
-        message: 'チャットを始めよう！',
+        userId: 0,
+        message: 'socketと通信できていないかもしれないよ',
       },
     ],
   },

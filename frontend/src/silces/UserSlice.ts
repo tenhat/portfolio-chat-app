@@ -4,7 +4,7 @@ const UserSlice = createSlice({
   name: 'user',
   initialState: {
     user: {
-      id: 0,
+      id: 1,
       name: '',
       email: '',
       password: '',
