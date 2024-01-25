@@ -22,3 +22,5 @@ venv/
 
 # 一時ファイル
 .tmp
+
+create_github_issues.py

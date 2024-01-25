@@ -7,6 +7,14 @@ import socket from '../../utils/socket'
 import { setSentMessages } from '../../silces/SentMessagesSlice'
 import { useDispatch } from 'react-redux'
 
+const CustomBadge = styled(Badge)`
+font-size: 1.2rem;
+margin: 1rem;
+`
+const CustomCol = styled(Col)`
+${props => props.isownmessage === "true" ? 'text-align: right' : 'text-align: left'};
+`
+
 export const ChatArea = () => {
   const { messages } = useSelector((state: any) => state.sentMessages)
   const { user } = useSelector((state: any) => state.user)
@@ -31,11 +39,6 @@ export const ChatArea = () => {
     }
   }, [dispatch, messages])
 
-  const CustomBadge = styled(Badge)`
-    font-size: 1.2rem;
-    margin: 1rem;
-    `
-
   return (
     <Container>
       {messages?.map((message: Message, index: number) => {
@@ -43,10 +46,10 @@ export const ChatArea = () => {
         console.log('isOwnMessage', message, isOwnMessage, user.id, message.userId)
         return (
           <Row key={index}>
-            <Col><CustomBadge bg="primary">{isOwnMessage ? '' : message.message}</CustomBadge></Col>
-            <Col><CustomBadge bg="light" text="dark">
+            <CustomCol isownmessage={isOwnMessage.toString()}><CustomBadge bg="primary">{isOwnMessage ? '' : message.message}</CustomBadge></CustomCol>
+            <CustomCol isownmessage={isOwnMessage.toString()}><CustomBadge bg="light" text="dark">
               {isOwnMessage ? message.message : ''}
-            </CustomBadge></Col>
+            </CustomBadge></CustomCol>
           </Row>
         )
       })}
