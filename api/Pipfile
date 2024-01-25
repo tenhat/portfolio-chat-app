@@ -20,10 +20,11 @@ python-dotenv = "==1.0.1"
 python-engineio = "==4.8.2"
 python-socketio = "==5.11.0"
 simple-websocket = "==1.0.0"
-werkzeug = "==3.0.1"
+werkzeug = "*"
 wsproto = "==1.2.0"
 zipp = "==3.17.0"
 flask-cors = "*"
+flask-jwt-extended = "*"
 
 [dev-packages]
 
