@@ -18,11 +18,12 @@ services:
       - ./api:/app
     depends_on:
       - db
+    environment:
+      - FLASK_ENV=development
 
   db:
     image: mongo:latest
-    ports:
-      - "27017:27017"
+    restart: always
     volumes:
       - mongodb_data:/data/db
     environment:
@@ -31,6 +32,7 @@ services:
 
   mongo-express:
     image: mongo-express
+    restart: always
     ports:
       - "8081:8081"
     depends_on:

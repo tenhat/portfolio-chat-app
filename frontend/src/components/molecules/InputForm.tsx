@@ -6,7 +6,6 @@ import { setMessage } from '../../silces/MessageSlice'
 import socket from '../../utils/socket'
 
 export const InputForm = () => {
-  console.log('InputForm')
   const dispatch = useDispatch()
   const { message } = useSelector((state: any) => state.message)
   const { user } = useSelector((state: any) => state.user)
