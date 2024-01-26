@@ -22,6 +22,7 @@ export const ChatArea = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    socket.connect()
     socket.on('load_messages', (data: any) => {
       console.log('load_messages', data)
       const convertedData = data.map((each: any) => {

@@ -9,7 +9,7 @@ def create_app():
     app.config.from_pyfile('../instance/config.py')
     jwt = JWTManager(app)
 
-    CORS(app, resources={r"/socket.io/*": {"origins": "*"}})
+    CORS(app)
 
     mongo_client = MongoClient(app.config['MONGO_URI'])
     app.db = mongo_client.chat
